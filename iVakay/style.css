@@ -1,0 +1,15 @@
+
+
+#logo-container{
+    background-image: url(images/dust_scratches.png);
+    padding: 30px 20px 30px 20px;
+}
+
+#header-images   img{
+    width: 100%;
+}
+
+#header-images{
+    max-width: 1000px;
+    margin: auto;
+}
