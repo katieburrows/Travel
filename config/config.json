@@ -2,8 +2,8 @@
     "development": {
       "username": "root",
       "password": "root",
-      "port":8889,
-      "database": "resort",
+      "port": 8889,
+      "database": "iVakayDB",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
@@ -17,7 +17,7 @@
     "production": {
       "username": "root",
       "password": null,
-      "database": "database_production",
+      "database": "iVakayDB",
       "host": "127.0.0.1",
       "dialect": "mysql"
     }
