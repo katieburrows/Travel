@@ -1,50 +1,35 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Grabbing our models
+//linked to resort.html--did alert test
+  // alert("ryannnnn said hi")
 
 var db = require("../models");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
-
   // GET route for getting all of the resorts
- app.get("/", function(req, res) {
-    res.send("It works!");  
-  });
- app.get("/api/resorts", function(req, res){
-  db.Resort.findAll({}).then(function(resorts) {
-      res.json(resorts);
-    })
- })
+  // alert("ryannnnn said hi")
   // POST route for saving a new resort. You can create a resort using the data on req.body
-  app.post("/api/resorts", function(req, res) {
-    console.log("Sarah is making me write: 'hi, Sarah'");
-      db.Resort.create({
-        resortName: req.body.resortName,
-        address: req.body.address
-          //add in the rest of the key value pairs from resort.js object
-      }).then(function(newResort) {
-        console.log("New resort:");
-        console.log(newResort);
-        res.redirect("/api/resorts");
+  app.get("/api/resorts", function(req, res) {
+      db.Resort.findAll({
+      	order: [['location', 'ASC']]
+      }).then(function(resorts) {
+        console.log("All resorts:");
+        console.log(resorts);
+        res.json(resorts);
+        // res.redirect("/api/resorts");
+      })
+
+  });
+
+  app.post("/api/findResort", function(req, res) {
+      db.Resort.findOne({
+      	where: {
+      		resortName: req.body.resort
+      	}
+      }).then(function(resort) {
+        console.log("Selected resort:");
+        console.log(resort);
+        res.json(resort);
+        // res.redirect("/api/resorts");
       })
 
   });
 }
-//   // DELETE route for deleting resorts. You can access the resort's id in req.params.id
-//   app.delete("/api/resorts/:id", function(req, res) {
-
-//   });
-
-//   // PUT route for updating resorts. The updated resorts will be available in req.body
-//   app.put("/api/resorts", function(req, res) {
-
-//   });
-// };
-
