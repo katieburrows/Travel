@@ -43,6 +43,9 @@ section {
     align-items: flex-start;
 }
 
+.homeButton {
+
+}
 
 /* @media (max-width: 1000px){
 
@@ -253,7 +256,8 @@ header nav li:last-child {
     border-radius: 6px;
 }
 
-.search .btn {
+.search .btn,
+.homeButton .btn {
     color: #fff;
     border-radius: 3px;
     text-transform: uppercase;

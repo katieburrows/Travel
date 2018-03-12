@@ -1,4 +1,10 @@
+ <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm41DL_X-SFXrmzKtqzmy3YR2ZnynXoVE&callback=initMap"></script>
+<script type="text/javascript" src="/map.js"></script>
     <section class="resortSection">
+        <div class="homeButton">
+            <a href = "/" class="home btn">GO HOME</a>
+        </div>
         <h1>{{resortName}}</h1>
         <div class="resortRow1">
             <div id="resortPics">
@@ -18,12 +24,13 @@
         <h1>Resort Opportunities</h1>
         <div class="resortRow2">
             <div id="resortOpp">
+                <div id="map" style="height: 500px"></div>
                 <!-- box -->
             </div>
             <div class="googleMap">
                 <ul class="resortDetails">
                     <li><span>Airport:</span> {{closestAirport}}</li>
-                    <li><span>Address:</span> {{address}}</li>
+                    <li><span>Address:</span> <p id="resortAddress">{{address}}</p></li>
                     <li><span>Phone:</span><a href="tel:{{phoneNumber}}">{{phoneNumber}}</a></li>
                     <li><span>Website:</span><a href="{{website}}" target="_blank">Website</a></li>
                 </ul>

@@ -49,48 +49,70 @@
 //  }
 // }
 
- <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    //         var geocoder = new google.maps.Geocoder();
+    // var address = "Dublin";
 
-    <script type="text/javascript">
+    // geocoder.geocode( { 'address': address}, function(results, status) {
 
-            var geocoder = new google.maps.Geocoder();
-    var address = "Dublin";
-
-    geocoder.geocode( { 'address': address}, function(results, status) {
-
-      if (status == google.maps.GeocoderStatus.OK) {
-        var latitude = results[0].geometry.location.lat();
-        var longitude = results[0].geometry.location.lng();
+    //   if (status == google.maps.GeocoderStatus.OK) {
+    //     var latitude = results[0].geometry.location.lat();
+    //     var longitude = results[0].geometry.location.lng();
 
 
-        initialize(latitude,longitude);
+    //     initialize(latitude,longitude);
 
-                } 
+    //             } 
 
-        }); 
+    //     }); 
 
 
-    function initialize(latitude,longitude) {
-        var latlng = new google.maps.LatLng(latitude,longitude);
+    // function initialize(latitude,longitude) {
+    //     var latlng = new google.maps.LatLng(latitude,longitude);
 
-        var myOptions = {
-          zoom: 14,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          mapTypeControl: false
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+    //     var myOptions = {
+    //       zoom: 14,
+    //       center: latlng,
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //       mapTypeControl: false
+    //     };
+    //     var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 
+    //     var marker = new google.maps.Marker({
+    //       position: latlng, 
+    //       map: map, 
+    //         title:"location : Dublin"
+    //     }); 
+    //   }
+
+
+function initMap() {
+    console.log($("#resortAddress").text());
+
+    var authKey = "&key=AIzaSyBm41DL_X-SFXrmzKtqzmy3YR2ZnynXoVE";
+    var address = $("#resortAddress").text();
+    var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
+    var completeQueryURL = queryURL + address + authKey;
+
+
+    $.ajax({
+      url: completeQueryURL,
+      method: "GET"
+    }).then(function(response) {
+        console.log(response.results[0].geometry.location);
+
+        var uluru = response.results[0].geometry.location;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
         var marker = new google.maps.Marker({
-          position: latlng, 
-          map: map, 
-            title:"location : Dublin"
-        }); 
-      }
+          position: uluru,
+          map: map
+        });
+    });
+}
 
 
-</script>
 
     //   var myLat = (response.data.lat);
     //   var myLon = (response.data.lon);
