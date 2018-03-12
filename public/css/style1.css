@@ -408,7 +408,11 @@ ____________________________ */
 #resortPics {
     height: 500px;
     width: 80%;
-    background-color: #666;
+    border-radius: 8px;
+}
+
+#resortPics img {
+    max-height: 500px;
     border-radius: 8px;
 }
 
@@ -425,7 +429,12 @@ ____________________________ */
 .resortDetails li {
     list-style: none;
     font-size: 1.5rem;
+    padding-bottom: 1rem;
     color: #333;
+}
+
+.resortDetails span {
+    font-weight: 700;
 }
 
 #resortOpp {

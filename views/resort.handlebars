@@ -2,17 +2,14 @@
         <h1>{{resortName}}</h1>
         <div class="resortRow1">
             <div id="resortPics">
+                {{#if photo1}}
+                  <img src="{{photo1}}" alt="{{resortName}}" />
+                {{/if}}
                 <div class="slider"></div>
             </div>
             <div class="resortInfo">
-                <!-- <h2>Resort Details</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis pariatur iste quasi possimus a quia omnis maiores cupiditate molestiae architecto, soluta aspernatur maxime alias vero inventore adipisci natus autem veniam!</p>
-                <ul class="resortDetails">
-                    <li><a href="#">Closest Airport</a></li>
-                    <li><a href="#">Address</a></li>
-                    <li><a href="#">Contact Info</a></li>
-                    <li><a href="#">Website</a></li>
-                </ul> -->
+                <h2>Resort Details</h2>
+                <p>{{description}}</p>
             </div>
         </div>
     </section>
@@ -24,7 +21,12 @@
                 <!-- box -->
             </div>
             <div class="googleMap">
-                <!-- google map -->
+                <ul class="resortDetails">
+                    <li><span>Airport:</span> {{closestAirport}}</li>
+                    <li><span>Address:</span> {{address}}</li>
+                    <li><span>Phone:</span><a href="tel:{{phoneNumber}}">{{phoneNumber}}</a></li>
+                    <li><span>Website:</span><a href="{{website}}" target="_blank">Website</a></li>
+                </ul>
             </div>
         </div>
     </section>
