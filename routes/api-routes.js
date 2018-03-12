@@ -23,32 +23,41 @@ module.exports = function(app) {
 
   });
 
-  app.post("/api/findResort", function(req, res) {
-      db.Resort.findOne({
-      	where: {
-      		resortName: req.body.resort
-      	}
-      }).then(function(resort) {
-        console.log("Selected resort:");
-        console.log(resort);
-        res.json(resort);
-      })
+  app.post("/resorts/add", function(req, res) {
+    //set this route up to post new resorts via a form...in version2
 
   });
 
   app.get("/resorts/:id", function(req, res) {
-    console.log("Testing");
+      console.log("Testing");
+      db.Resort.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(resort) {
+        //console.log("Selected resort:");
+        console.log(resort.dataValues.resortName);
+        // res.json(resort);
+        res.render("resort", resort.dataValues );
+        // res.redirect("/api/resorts");
+      })
+
+  });
+  app.get("/resorts/name/:name", function(req, res) {
+    console.log("Testing 2");
     db.Resort.findOne({
       where: {
-        id: req.params.id
+        routeName: req.params.name
       }
+      //
     }).then(function(resort) {
       //console.log("Selected resort:");
       console.log(resort.dataValues.resortName);
       // res.json(resort);
       res.render("resort", resort.dataValues );
       // res.redirect("/api/resorts");
-    })
+      console.log(resort);
+    });
 
 });
 }

@@ -1,69 +1,115 @@
 //deleted alert that was here because it was annoying, this page is connected to homepage.html
-// var googleMapsClient = require('@google/maps').createClient({
-//   key: '&key=AIzaSyBm41DL_X-SFXrmzKtqzmy3YR2ZnynXoVE'
-// });
- var mysql = require("mysql2");
- function initMap(address) {
+
+
+
+//       function initMap() {
+//         var uluru = {lat: -25.363, lng: 131.044};
+//         var map = new google.maps.Map(document.getElementById('map'), {
+//           zoom: 4,
+//           center: uluru
+//         });
+//         var marker = new google.maps.Marker({
+//           position: uluru,
+//           map: map
+//         });
+//       }
+    
+
+
+// var authKey = "&key=AIzaSyBm41DL_X-SFXrmzKtqzmy3YR2ZnynXoVE";
+// var address = "";
+// var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
+// var completeQueryURL = queryURL + address + authKey;
+
+
+// $.ajax({
+//       url: completeQueryURL,
+//       method: "GET"
+//     }).then(function(response) {
+//       console.log(response);
+//     });
+
+// results[]: {
+//  types[]: string,
+//  formatted_address: string,
+//  address_components[]: {
+//    short_name: string,
+//    long_name: string,
+//    postcode_localities[]: string,
+//    types[]: string
+//  },
+//  partial_match: boolean,
+//  place_id: string,
+//  postcode_localities[]: string,
+//  geometry: {
+//    location: LatLng,
+//    location_type: GeocoderLocationType
+//    viewport: LatLngBounds,
+//    bounds: LatLngBounds
+//  }
+// }
+
+ <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript">
 
             var geocoder = new google.maps.Geocoder();
+    var address = "Dublin";
 
-            geocoder.geocode( { 'address': address}, function(results, status) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
 
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-                }
-
-                console.log(latitude);
-                console.log(longitude);
-
-                var myLatLng = {lat: latitude, lng: longitude};
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
-                    center: myLatLng
-                });
-
-                var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: 'Hello World!'
-                });
-
-            });
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
 
 
-        }
+        initialize(latitude,longitude);
 
-  initMap(address);
-      
-var address = "3132 Stout Street, Denver, CO, 80205";
+                } 
 
-
-//pull address from db
-
-//this code isn't needed with current google call
-      // function initMap() {
-      //   var uluru = {lat: -25.363, lng: 131.044};
-      //   var map = new google.maps.Map(document.getElementById('map'), {
-      //     zoom: 4,
-      //     center: uluru
-      //   });
-      //   var marker = new google.maps.Marker({
-      //     position: uluru,
-      //     map: map
-      //   });
-      // }
-    
-      // var authKey = "&key=AIzaSyBm41DL_X-SFXrmzKtqzmy3YR2ZnynXoVE";
-      // // var address = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
-      // var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
-      // var completeQueryURL = queryURL + authKey;
+        }); 
 
 
-      // $.ajax({
-      //       url: completeQueryURL,
-      //       method: "GET"
-      //     }).then(function(response) {
-      //       console.log(response);
-      //     });
+    function initialize(latitude,longitude) {
+        var latlng = new google.maps.LatLng(latitude,longitude);
+
+        var myOptions = {
+          zoom: 14,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
+        var marker = new google.maps.Marker({
+          position: latlng, 
+          map: map, 
+            title:"location : Dublin"
+        }); 
+      }
+
+
+</script>
+
+    //   var myLat = (response.data.lat);
+    //   var myLon = (response.data.lon);
+    //   var myAddress = (response.data.address_1, response.data.city, response.data.state)
+
+    // $("#address").html(myAddress);
+
+    //   function initMap() {
+    //     var location = {lat: myLat, lng: myLon};
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //       zoom: 12,
+    //       center: location
+    //     });
+    //     var marker = new google.maps.Marker({
+    //       position: location,
+    //       map: map
+    //     });
+    //   }
+ 
+    // // <script async defer
+    // // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjdLWylDJt3INqwrSBnWkN46bmgGJZRz0&callback=initMap">
+    // // </script>

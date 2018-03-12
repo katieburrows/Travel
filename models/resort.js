@@ -91,7 +91,12 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isUrl: true,
             }
+        },
+        routeName: {
+            type: DataTypes.STRING,
+            //slugified version of resortName
         }
+
     });
     return Resort;
 };
