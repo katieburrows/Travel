@@ -1,4 +1,4 @@
-$("#search").on("submit", function(event){
+$("#searchBtn").on("click", function(event){
 	event.preventDefault();
 
 	var findResort = {
@@ -8,7 +8,10 @@ $("#search").on("submit", function(event){
 	$.ajax("/api/findResort", {
 		method: "POST",
 		data: findResort
-	}).then(function(data){
-		console.log(data);
+	}).then(function(resort){
+		console.log(resort);
+
 	})
+
+
 })

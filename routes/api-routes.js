@@ -7,6 +7,10 @@ module.exports = function(app) {
   // GET route for getting all of the resorts
   // alert("ryannnnn said hi")
   // POST route for saving a new resort. You can create a resort using the data on req.body
+  app.get("/", function(req, res) {
+    res.render("mainpage");
+  })
+  
   app.get("/api/resorts", function(req, res) {
       db.Resort.findAll({
       	order: [['location', 'ASC']]
@@ -28,8 +32,23 @@ module.exports = function(app) {
         console.log("Selected resort:");
         console.log(resort);
         res.json(resort);
-        // res.redirect("/api/resorts");
       })
 
   });
+
+  app.get("/resorts/:id", function(req, res) {
+    console.log("Testing");
+    db.Resort.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(resort) {
+      //console.log("Selected resort:");
+      console.log(resort.dataValues.resortName);
+      // res.json(resort);
+      res.render("resort", resort.dataValues );
+      // res.redirect("/api/resorts");
+    })
+
+});
 }
