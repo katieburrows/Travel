@@ -343,7 +343,7 @@ header nav li:last-child {
     width: 23%;
     padding: 1% 0;
     background-color: #2ac1f1;
-    opacity: .6;
+    opacity: .85;
     margin: 0 0 1% 0;
     border-radius: 0 0 8px 8px;
 }
@@ -395,6 +395,9 @@ ____________________________ */
     text-transform: capitalize;
     font: bold 2rem 'Open Sans', sans-serif;
     margin-bottom: 2%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .resortRow1,
@@ -402,12 +405,13 @@ ____________________________ */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 #resortPics {
     height: 500px;
-    width: 80%;
+    width: 650px;
     border-radius: 8px;
 }
 
@@ -418,19 +422,26 @@ ____________________________ */
 
 .resortInfo {
     height: 500px;
-    width: 35%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     margin-left: 2.5%;
     border: 2px solid #666;
     border-radius: 8px;
+    padding: 20px;
 }
 
 .resortDetails li {
     list-style: none;
     font-size: 1.5rem;
     padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
     color: #333;
+    padding: 25px 0;
+}
+
+.resortInfo h2 {
+    padding-bottom: 15px;
 }
 
 .resortDetails span {
@@ -439,7 +450,7 @@ ____________________________ */
 
 #resortOpp {
     height: 500px;
-    width: 80%;
+    width: 650px;
     background-color: #666;
     border-radius: 8px;
 }
@@ -452,11 +463,12 @@ ____________________________ */
 .googleMap {
     display: flex;
     height: 500px;
-    width: 35%;
+    width: 40%;
     flex-direction: column;
     margin-left: 2.5%;
     border: 2px solid #666;
     border-radius: 8px;
+    padding: 20px;
 }
 
 
